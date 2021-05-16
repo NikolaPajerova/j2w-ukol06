@@ -7,12 +7,18 @@ import java.util.List;
 
 @Service
 public class CitatyService {
+    private CitatyRepository citatyRepository;
+    private NahodneCisloService nahodneCisloService;
+
+    @Autowired
+    public CitatyService(CitatyRepository citatyRepository, NahodneCisloService nahodneCisloService) {
+        this.citatyRepository = citatyRepository;
+        this.nahodneCisloService = nahodneCisloService;
+    }
 
     @Autowired
     public String nahodnyCitat() {
-        int mez = new CitatyRepository().pocet();
-        int cislo = new NahodneCisloService().dejNahodneCislo(mez);
-        return new CitatyRepository().citat(cislo);
+        return new CitatyRepository().citat(nahodneCisloService.dejNahodneCislo(citatyRepository.pocet()));
     }
 
 }

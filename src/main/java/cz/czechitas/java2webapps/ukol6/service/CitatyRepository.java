@@ -21,8 +21,8 @@ public class CitatyRepository {
         return seznamCitatu.size();
     }
 
-    private List<String> citat(int poradi) {
-        return seznamCitatu(poradi);
+    public String citat(int poradi) {
+        return seznamCitatu.get(poradi);
     }
 
 }
